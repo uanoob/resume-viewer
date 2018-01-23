@@ -2,6 +2,30 @@ import React, { Component } from 'react';
 
 class Portfolio extends Component {
   render() {
+    let projects = [];
+    if (this.props.data) {
+      projects = this.props.data.projects.map(project => {
+        let imageUrl = 'images/portfolio/' + project.image;
+        return (
+          <div key={project.title} className="columns portfolio-item">
+            <div className="item-wrap">
+              <a href={project.modal} title={project.title}>
+                <img alt="" src={imageUrl} />
+                <div className="overlay">
+                  <div className="portfolio-item-meta">
+                    <h5>{project.title}</h5>
+                    <p>{project.category}</p>
+                  </div>
+                </div>
+                <div className="link-icon">
+                  <i className="icon-plus" />
+                </div>
+              </a>
+            </div>
+          </div>
+        );
+      });
+    }
     return (
       <section id="portfolio">
         <div className="row">
@@ -40,102 +64,7 @@ class Portfolio extends Component {
                   </a>
                 </div>
               </div>
-              <div className="columns portfolio-item">
-                <div className="item-wrap">
-                  <a href="#modal-03" title="">
-                    <img alt="" src="images/portfolio/judah.jpg" />
-                    <div className="overlay">
-                      <div className="portfolio-item-meta">
-                        <h5>Judah</h5>
-                        <p>Webdesign</p>
-                      </div>
-                    </div>
-                    <div className="link-icon">
-                      <i className="icon-plus" />
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <div className="columns portfolio-item">
-                <div className="item-wrap">
-                  <a href="#modal-04" title="">
-                    <img alt="" src="images/portfolio/into-the-light.jpg" />
-                    <div className="overlay">
-                      <div className="portfolio-item-meta">
-                        <h5>Into The Light</h5>
-                        <p>Photography</p>
-                      </div>
-                    </div>
-                    <div className="link-icon">
-                      <i className="icon-plus" />
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <div className="columns portfolio-item">
-                <div className="item-wrap">
-                  <a href="#modal-05" title="">
-                    <img alt="" src="images/portfolio/farmerboy.jpg" />
-                    <div className="overlay">
-                      <div className="portfolio-item-meta">
-                        <h5>Farmer Boy</h5>
-                        <p>Branding</p>
-                      </div>
-                    </div>
-                    <div className="link-icon">
-                      <i className="icon-plus" />
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <div className="columns portfolio-item">
-                <div className="item-wrap">
-                  <a href="#modal-06" title="">
-                    <img alt="" src="images/portfolio/girl.jpg" />
-                    <div className="overlay">
-                      <div className="portfolio-item-meta">
-                        <h5>Girl</h5>
-                        <p>Photography</p>
-                      </div>
-                    </div>
-                    <div className="link-icon">
-                      <i className="icon-plus" />
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <div className="columns portfolio-item">
-                <div className="item-wrap">
-                  <a href="#modal-07" title="">
-                    <img alt="" src="images/portfolio/origami.jpg" />
-                    <div className="overlay">
-                      <div className="portfolio-item-meta">
-                        <h5>Origami</h5>
-                        <p>Illustrration</p>
-                      </div>
-                    </div>
-                    <div className="link-icon">
-                      <i className="icon-plus" />
-                    </div>
-                  </a>
-                </div>
-              </div>
-              <div className="columns portfolio-item">
-                <div className="item-wrap">
-                  <a href="#modal-08" title="">
-                    <img alt="" src="images/portfolio/retrocam.jpg" />
-                    <div className="overlay">
-                      <div className="portfolio-item-meta">
-                        <h5>Retrocam</h5>
-                        <p>Web Development</p>
-                      </div>
-                    </div>
-                    <div className="link-icon">
-                      <i className="icon-plus" />
-                    </div>
-                  </a>
-                </div>
-              </div>
+              {projects}
             </div>
           </div>
         </div>

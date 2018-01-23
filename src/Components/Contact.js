@@ -2,6 +2,20 @@ import React, { Component } from 'react';
 
 class Contact extends Component {
   render() {
+    let name = '';
+    let street = '';
+    let city = '';
+    let state = '';
+    let zip = '';
+    let phone = '';
+    if (this.props.data) {
+      name = this.props.data.name;
+      street = this.props.data.address.street;
+      city = this.props.data.address.city;
+      state = this.props.data.address.state;
+      zip = this.props.data.address.zip;
+      phone = this.props.data.phone;
+    }
     return (
       <section id="contact">
         <div className="row section-head">
@@ -62,10 +76,11 @@ class Contact extends Component {
             <div className="widget widget_contact">
               <h4>Address and Phone</h4>
               <p className="address">
-                Jonathan Doe<br />
-                1600 Amphitheatre Parkway <br />
-                Mountain View, CA 94043 US<br />
-                <span>(123) 456-7890</span>
+                {name}
+                <br />
+                {street} <br />
+                {city}, {state} {zip} US<br />
+                <span>{phone}</span>
               </p>
             </div>
           </aside>

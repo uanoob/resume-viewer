@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 class About extends Component {
   render() {
     let name = '';
-    let image = '';
+    let imageUrl = '';
     let bio = '';
     let street = '';
     let city = '';
@@ -14,7 +14,7 @@ class About extends Component {
     let resumedownload = '';
     if (this.props.data) {
       name = this.props.data.name;
-      image = 'images/' + this.props.data.image;
+      imageUrl = 'images/' + this.props.data.image;
       bio = this.props.data.bio;
       street = this.props.data.address.street;
       city = this.props.data.address.city;
@@ -28,7 +28,7 @@ class About extends Component {
       <section id="about">
         <div className="row">
           <div className="three columns">
-            <img className="profile-pic" src={image} alt="" />
+            <img className="profile-pic" src={imageUrl} alt="" />
           </div>
           <div className="nine columns main-col">
             <h2>About Me</h2>

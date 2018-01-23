@@ -2,6 +2,26 @@ import React, { Component } from 'react';
 
 class Header extends Component {
   render() {
+    let name = '';
+    let occupation = '';
+    let description = '';
+    let city = '';
+    let networks = [];
+    if (this.props.data) {
+      name = this.props.data.name;
+      occupation = this.props.data.occupation;
+      description = this.props.data.description;
+      city = this.props.data.address.city;
+      networks = this.props.data.social.map(network => {
+        return (
+          <li key={network.name}>
+            <a href={network.url}>
+              <i className={network.className} />
+            </a>
+          </li>
+        );
+      });
+    }
     return (
       <header id="home">
         <nav id="nav-wrap">
@@ -48,57 +68,12 @@ class Header extends Component {
 
         <div className="row banner">
           <div className="banner-text">
-            <h1 className="responsive-headline">I'm Jonathan Doe.</h1>
+            <h1 className="responsive-headline">I'm {name}</h1>
             <h3>
-              I'm a Manila based <span>graphic designer</span>, <span>illustrator</span> and{' '}
-              <span>webdesigner</span> creating awesome and effective visual identities for
-              companies of all sizes around the globe. Let's{' '}
-              <a className="smoothscroll" href="#about">
-                start scrolling
-              </a>
-              and learn more{' '}
-              <a className="smoothscroll" href="#about">
-                about me
-              </a>.
+              I'm a {city} based <span>{occupation}</span> {description}.
             </h3>
             <hr />
-            <ul className="social">
-              <li>
-                <a href="#">
-                  <i className="fa fa-facebook" />
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i className="fa fa-twitter" />
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i className="fa fa-google-plus" />
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i className="fa fa-linkedin" />
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i className="fa fa-instagram" />
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i className="fa fa-dribbble" />
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <i className="fa fa-skype" />
-                </a>
-              </li>
-            </ul>
+            <ul className="social">{networks}</ul>
           </div>
         </div>
 
